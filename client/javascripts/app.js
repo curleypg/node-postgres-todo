@@ -4,34 +4,31 @@ angular.module('nodeTodo', [])
   $scope.todoData = {};
   // Get all todos
   $http.get('/api/v1/todos')
-  .success((data) => {
-    $scope.todoData = data;
-    console.log(data);
-  })
-  .error((error) => {
+  .then(function(success){
+    $scope.todoData = success.data;
+    console.log(success.data);
+  },function(error){
     console.log('Error: ' + error);
   });
   // Create a new todo
   $scope.createTodo = () => {
     $http.post('/api/v1/todos', $scope.formData)
-    .success((data) => {
+    .then(function(success){
       $scope.formData = {};
-      $scope.todoData = data;
-      console.log(data);
-    })
-    .error((error) => {
+      $scope.todoData = success.data;
+      console.log(success.data);
+    },function(error){
       console.log('Error: ' + error);
     });
   };
   // Delete a todo
   $scope.deleteTodo = (todoID) => {
     $http.delete('/api/v1/todos/' + todoID)
-    .success((data) => {
-      $scope.todoData = data;
-      console.log(data);
-    })
-    .error((data) => {
-      console.log('Error: ' + data);
+    .then(function(success){
+      $scope.todoData = success.data;
+      console.log(success.data);
+    },function(error){
+      console.log('Error: ' + error);
     });
   };
 });
