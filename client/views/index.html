@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html ng-app="nodeTodo">
+<html ng-app="nodeInventory">
   <head>
-    <title>Todo App - with Node + Express + Angular + PostgreSQL</title>
+    <title>Inventory App - with Node + Express + Angular + PostgreSQL</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="/stylesheets/style.css" media="screen">
@@ -9,22 +9,22 @@
   <body ng-controller="mainController">
     <div class="container">
       <div class="header">
-        <h1>Todo App</h1>
+        <h1>Inventory App</h1>
         <hr>
         <h1 class="lead">Node + Express + Angular + PostgreSQL</h1>
       </div>
-      <div class="todo-form">
+      <div class="inventory-form">
         <form>
           <div class="form-group">
-            <input type="text" class="form-control input-lg" placeholder="Enter text..." ng-model="formData.text">
+            <input type="text" class="form-control input-lg" placeholder="Enter text..." ng-model="formData.name">
           </div>
-          <button type="submit" class="btn btn-primary btn-lg btn-block" ng-click="createTodo()">Add Todo</button>
+          <button type="submit" class="btn btn-primary btn-lg btn-block" ng-click="createItem()">Add Inventory</button>
         </form>
       </div>
       <br>
-      <div class="todo-list">
-        <ul ng-repeat="todo in todoData">
-          <li><h3><input class="lead" type="checkbox" ng-click="deleteTodo(todo.id)">&nbsp;{{ todo.text }}</h3></li><hr>
+      <div class="inventory-list">
+        <ul ng-repeat="inventory in inventoryData">
+          <li><h3><input class="lead" type="checkbox" ng-click="deleteItem(inventory.id)">&nbsp;{{ inventory.name }}</h3></li><hr>
         </ul>
       </div>
     </div>
