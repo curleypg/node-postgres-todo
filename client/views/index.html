@@ -3,7 +3,6 @@
   <head>
     <title>Inventory App - with Node + Express + Angular + PostgreSQL</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="/stylesheets/style.css" media="screen">
   </head>
   <body ng-controller="mainController">
@@ -17,19 +16,18 @@
         <form>
           <div class="form-group">
             <input type="text" class="form-control input-lg" placeholder="Enter text..." ng-model="formData.name">
+            <button type="submit" class="btn btn-primary btn-lg btn-block" ng-click="createItem()">Add Inventory</button>
           </div>
-          <button type="submit" class="btn btn-primary btn-lg btn-block" ng-click="createItem()">Add Inventory</button>
         </form>
       </div>
       <br>
       <div class="inventory-list">
-        <ul ng-repeat="inventory in inventoryData">
-          <li><h3><input class="lead" type="checkbox" ng-click="deleteItem(inventory.id)">&nbsp;{{ inventory.name }}</h3></li><hr>
-        </ul>
+        <div ng-repeat="inventory in inventoryData">
+          <div class="itemInfo">
+            <h3><input class="lead" type="checkbox" ng-click="deleteItem(inventory.id)">&nbsp;{{ inventory.name }}</h3>
+          </div>
+        </div>
       </div>
-    </div>
-    <script src="//code.jquery.com/jquery-2.2.4.min.js" type="text/javascript"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.2/angular.min.js"></script>
     <script src="javascripts/app.js"></script>
   </body>
