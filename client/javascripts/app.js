@@ -1,31 +1,31 @@
-angular.module('nodeTodo', [])
+angular.module('nodeInventory', [])
 .controller('mainController', ($scope, $http) => {
   $scope.formData = {};
-  $scope.todoData = {};
-  // Get all todos
-  $http.get('/api/v1/todos')
+  $scope.inventoryData = {};
+  // Get all items
+  $http.get('/api/v1/inventory')
   .then(function(success){
-    $scope.todoData = success.data;
+    $scope.inventoryData = success.data;
     console.log(success.data);
   },function(error){
     console.log('Error: ' + error);
   });
-  // Create a new todo
-  $scope.createTodo = () => {
-    $http.post('/api/v1/todos', $scope.formData)
+  // Create a new item
+  $scope.createItem = () => {
+    $http.post('/api/v1/inventory', $scope.formData)
     .then(function(success){
       $scope.formData = {};
-      $scope.todoData = success.data;
+      $scope.inventoryData = success.data;
       console.log(success.data);
     },function(error){
       console.log('Error: ' + error);
     });
   };
-  // Delete a todo
-  $scope.deleteTodo = (todoID) => {
-    $http.delete('/api/v1/todos/' + todoID)
+  // Delete an item
+  $scope.deleteItem = (inventoryID) => {
+    $http.delete('/api/v1/inventory/' + inventoryID)
     .then(function(success){
-      $scope.todoData = success.data;
+      $scope.inventoryData = success.data;
       console.log(success.data);
     },function(error){
       console.log('Error: ' + error);
