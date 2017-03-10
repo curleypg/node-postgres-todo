@@ -19,8 +19,8 @@
 set -eou pipefail
 IFS=$'\n\t'
 
-url=${1:-http://localhost:3000/api/v1/todos}
-db=${2:-todo}
+url=${1:-http://localhost:3000/api/v1/inventory}
+db=${2:-inventory}
 duration=${3:-10}
 users=${4:-20}
 
@@ -42,7 +42,7 @@ ps_running() {
 ab -c "$users" -t "$duration" "$url" & WAITPID=$!
 loop=1
 while ps_running "$WAITPID"; do
-    conn=$(pg_connections todo)
+    conn=$(pg_connections inventory)
     echo "$((loop++))s:	$conn connections"
     sleep 1
 done
