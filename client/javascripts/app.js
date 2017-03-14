@@ -2,6 +2,11 @@ angular.module('nodeInventory', [])
 .controller('mainController', ($scope, $http) => {
   $scope.formData = {};
   $scope.inventoryData = {};
+  $scope.selectedIndex = undefined;
+  // Show/hide details
+  $scope.displayDetails = function(index){
+    return $scope.selectedIndex != index? $scope.selectedIndex=index: $scope.selectedIndex = null;
+  }
   // Get all items
   $http.get('/api/v1/inventory')
   .then(function(success){
