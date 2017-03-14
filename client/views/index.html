@@ -24,7 +24,12 @@
       <div class="inventory-list">
         <div ng-repeat="inventory in inventoryData">
           <div class="itemInfo">
-            <h3><input class="lead" type="checkbox" ng-click="deleteItem(inventory.id)">&nbsp;{{ inventory.name }}</h3>
+            <div class="itemName" ng-click="displayDetails = ! displayDetails">
+              <h3>{{ inventory.name }}</h3>
+            </div>
+            <div class="itemDetails" ng-show="displayDetails">
+              Delete: <input class="lead" type="checkbox" ng-click="deleteItem(inventory.id)">
+            </div>
           </div>
         </div>
       </div>
